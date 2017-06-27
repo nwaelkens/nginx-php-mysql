@@ -1,0 +1,16 @@
+# Meant to be a global GIT ignore file for several projects
+
+# MacOS system files
+.DS_Store
+
+# IDE files
+.buildpath
+.project
+.settings
+nbproject/
+.idea
+
+
+# misc
+.svn/
+

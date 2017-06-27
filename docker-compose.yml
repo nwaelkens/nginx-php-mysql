@@ -1,0 +1,29 @@
+nginx:
+  build: docker/nginx
+  ports:
+    - "80:80"
+  links:
+    - php
+  volumes:
+    - ./:/app
+
+php:
+  build: docker/php
+  volumes:
+    - ./:/app
+  working_dir: /app
+  links:
+    - db
+
+db:
+  image: mysql:latest
+  volumes:
+     - /var/lib/mysql
+  ports:
+    - "3306:3306"
+  environment:
+    - DB_NAME=app_dev
+    - DB_USER=root
+    - DB_PASS=root
+
+
