@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
   libmcrypt-dev \
   libpng12-dev \
   unzip \
+  vim \
   zip \
   mysql-client \
   && docker-php-ext-install -j$(nproc) iconv mcrypt mysqli pdo_mysql opcache \
