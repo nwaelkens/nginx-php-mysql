@@ -11,6 +11,7 @@ php:
   build: docker/php
   volumes:
     - ./:/app
+    - ~/.ssh:/home/vagrant/.ssh
   working_dir: /app
   links:
     - db
@@ -25,5 +26,3 @@ db:
     - DB_NAME=app_dev
     - DB_USER=root
     - DB_PASS=root
-
-
