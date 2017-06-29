@@ -13,7 +13,6 @@ RUN useradd -ms /bin/bash vagrant
 # install packages and PHP extensions
 
 RUN apt-get update && apt-get install -y \
-  curl \
   git \
   libfreetype6-dev \
   libjpeg62-turbo-dev \
@@ -45,7 +44,7 @@ RUN curl -OL https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-install
 
 # set php configuration by copying a local .conf file
 
-COPY php-fpm.conf /etc/php-fpm.conf
+COPY php-fpm.conf /usr/local/etc/php-fpm.d/php-fpm.conf
 
 
 
@@ -58,10 +57,8 @@ USER vagrant
 # copy user profile files to userdir
 # a collection of usefull scripts when working on the command line
 
-COPY .* /home/vagrant/
-
-# COPY .bashrc /home/vagrant/
-# COPY .git-completion.bash /home/vagrant/
-# COPY .git-prompt.sh /home/vagrant/
-# COPY .gitconfig /home/vagrant/
-# COPY .gitignore /home/vagrant/
+COPY .bashrc /home/vagrant/
+COPY .git-completion.bash /home/vagrant/
+COPY .git-prompt.sh /home/vagrant/
+COPY .gitconfig /home/vagrant/
+COPY .gitignore /home/vagrant/
