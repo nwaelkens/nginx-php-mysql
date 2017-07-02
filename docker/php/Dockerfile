@@ -42,6 +42,13 @@ RUN curl -OL https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-install
 
 
 
+# install XDebug
+
+RUN pecl install xdebug
+COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+
+
+
 # set php configuration by copying a local .conf file
 
 COPY php-fpm.conf /usr/local/etc/php-fpm.d/php-fpm.conf
