@@ -1,4 +1,4 @@
 FROM nginx:latest
 
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY symfony.conf /etc/nginx/conf.d/symfony.conf
+COPY sulu.cms.conf /etc/nginx/conf.d/symfony.conf
