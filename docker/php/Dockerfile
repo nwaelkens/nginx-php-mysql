@@ -49,9 +49,10 @@ COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 
 
-# set php configuration by copying a local .conf file
+# set php configuration by copying local .conf files
 
-COPY php-fpm.conf /usr/local/etc/php-fpm.d/php-fpm.conf
+COPY php-fpm.conf /usr/local/etc/php-fpm.conf
+COPY www.conf /usr/local/etc/php-fpm.d/www.conf
 
 
 
