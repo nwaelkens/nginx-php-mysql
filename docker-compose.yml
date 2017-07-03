@@ -5,14 +5,14 @@ nginx:
   links:
     - php
   volumes:
-    - ./:/app
+    - ./:/project
 
 php:
   build: docker/php
   volumes:
-    - ./:/app
+    - ./:/project
     - ~/.ssh:/home/vagrant/.ssh
-  working_dir: /app
+  working_dir: /project
   links:
     - db
 
@@ -23,6 +23,5 @@ db:
   ports:
     - "3306:3306"
   environment:
-    - DB_NAME=app_dev
-    - DB_USER=root
-    - DB_PASS=root
+    - MYSQL_DATABASE=appdb_dev
+    - MYSQL_ROOT_PASSWORD=changeme
