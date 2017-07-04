@@ -5,12 +5,12 @@ nginx:
   links:
     - php
   volumes:
-    - ./:/project
+    - ./:/project:cached
 
 php:
   build: docker/php
   volumes:
-    - ./:/project
+    - ./:/project:cached
     - ~/.ssh:/home/vagrant/.ssh
   working_dir: /project
   links:
