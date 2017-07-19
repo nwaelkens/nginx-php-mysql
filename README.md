@@ -12,13 +12,15 @@ Dockerized Development Environment.
   With configfiles for Symfony or Sulu CMS
 - MySQL\
   mysql:latest
+- MailHog
+  mailhog/mailhog:latest
   
 
 # Description
 Simple, but complete PHP development environment with as base principal: __nothing should be installed on the host__.
 Basic dev tools are available in the PHP container. Your .ssh folder is made available in 
 the PHP container through volume mapping. 
-See the Basic Usage section. 
+See the Basic usage section. 
 
 When using bash in a PHP container some great little tools are made available like GIT completion and the prompt known from debian distributions.
 
@@ -50,7 +52,7 @@ $ docker-compose exec php bash
 ### nginx
 The webserver will present your artwork by default on dev.project.org:80
 
-### mysql
+### MySQL
 Use the 'docker-compose-key' as dbhost from within linked containers. Default DB settings are: 
 - DBHost: db
 - DBUser: root
@@ -64,6 +66,13 @@ Start the mysql-client from your host machine:
 ```
 $ docker-compose exec php mysql -hdb -uroot -p
 ```
+
+### Mailhog
+Use these SMTP settings in your PHP scripts: 
+- SMTPhost: mailhog
+- Port: 1025
+
+To see received mail visit: http://dev.project.org:8025 (or http://localhost:8025)
 
 
 # Before you start
