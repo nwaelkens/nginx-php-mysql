@@ -53,7 +53,7 @@ COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 COPY php-fpm.conf /usr/local/etc/php-fpm.conf
 COPY www.conf /usr/local/etc/php-fpm.d/www.conf
-
+COPY php-cli.ini /usr/local/etc/php/conf.d/php-cli.ini
 
 
 # continue as user vagrant
