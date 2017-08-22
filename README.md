@@ -80,7 +80,7 @@ To see received mail visit: http://dev.project.org:8025 (or http://localhost:802
 - [ ] change your User Git name in docker/php/.gitconfig
 - [ ] change your User Git email address in docker/php/.gitconfig
 - [ ] change your Xdebug remote host IP address in docker/php/xdebug.ini
-- [ ] Set up nginx: Choose between the default symfony.cms.conf of sylu.cms.conf configuration or add your own in docker/nginx/
+- [ ] Set up nginx: Choose between the default symfony.cms.conf or sulu.cms.conf configuration or add your own in docker/nginx/
  Make sure you copy the right configuration to your container by editing docker/nginx/Dockerfile
  At last, check the NginX server name and NginX root path in your NginX config file. You can use all the defaults if you like - but don't forget to add 127.0.0.1 dev.project.org to your /etc/hosts file.
 - [ ] add your servername to your hostsfile: `127.0.0.1 dev.project.org` 
