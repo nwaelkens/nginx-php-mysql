@@ -8,10 +8,7 @@ FROM php:7-fpm
 
 RUN useradd -ms /bin/bash vagrant
 
-
-
 # install packages and PHP extensions
-
 RUN apt-get update && apt-get install -y \
   git \
   libfreetype6-dev \
@@ -26,45 +23,33 @@ RUN apt-get update && apt-get install -y \
   && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
   && docker-php-ext-install -j$(nproc) gd
 
-
-
 # install composer
-
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-
-
 # install git-flow
-
 RUN curl -OL https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-installer.sh && \
   chmod +x gitflow-installer.sh && \
   ./gitflow-installer.sh
 
-
-
 # install XDebug
-
 RUN pecl install xdebug
 COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
-
+# install PHPUnit
+RUN curl -OL https://phar.phpunit.de/phpunit.phar && \
+  chmod +x phpunit.phar && \
+  mv phpunit.phar /usr/local/bin/phpunit
 
 # set php configuration by copying local .conf files
-
 COPY php-fpm.conf /usr/local/etc/php-fpm.conf
 COPY www.conf /usr/local/etc/php-fpm.d/www.conf
 COPY php-cli.ini /usr/local/etc/php/conf.d/php-cli.ini
 
-
 # continue as user vagrant
-
 USER vagrant
-
-
 
 # copy user profile files to userdir
 # a collection of usefull scripts when working on the command line
-
 COPY .bashrc /home/vagrant/
 COPY .git-completion.bash /home/vagrant/
 COPY .git-prompt.sh /home/vagrant/
