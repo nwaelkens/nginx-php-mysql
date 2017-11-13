@@ -77,10 +77,18 @@ To see received mail visit: http://dev.project.org:8025 (or http://localhost:802
 
 # Before you start
 
-- [ ] change your User Git name in docker/php/.gitconfig
-- [ ] change your User Git email address in docker/php/.gitconfig
-- [ ] change your Xdebug remote host IP address in docker/php/xdebug.ini
+- [ ] change your User Git user credentials in docker/php/.gitconfig
+- [ ] change your Xdebug remote host IP address in docker/php/xdebug.ini or better, see xdebug note below.
 - [ ] Set up nginx: Choose between the default symfony.cms.conf or sulu.cms.conf configuration or add your own in docker/nginx/
  Make sure you copy the right configuration to your container by editing docker/nginx/Dockerfile
  At last, check the NginX server name and NginX root path in your NginX config file. You can use all the defaults if you like - but don't forget to add 127.0.0.1 dev.project.org to your /etc/hosts file.
 - [ ] add your servername to your hostsfile: `127.0.0.1 dev.project.org` 
+
+*Note concerning xdebug:
+for Docker for macOS or Windows, you need to provide your IP address.
+For macOS, you can create an alias of your loopback (127.0.0.1) address
+with the following command:
+
+```sudo ifconfig en0 alias 10.254.254.254 255.255.255.0```
+
+Tnx to Tom Keur for pointing out this little trick. 
